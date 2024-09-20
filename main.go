@@ -4,11 +4,9 @@ import (
 	"log"
 	"net/http/httputil"
 	"net/url"
-	"os"
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 )
 
 func reverseProxy(target string) gin.HandlerFunc {
@@ -37,7 +35,7 @@ func reverseProxy(target string) gin.HandlerFunc {
 }
 
 func main() {
-	err := godotenv.Load()
+	/* err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
@@ -58,7 +56,11 @@ func main() {
 	}
 	user_service := os.Getenv("USER_SERVICE")
 	rating_service := os.Getenv("RATING_SERVICE")
-	hotel_service := os.Getenv("HOTEL_SERVICE")
+	hotel_service := os.Getenv("HOTEL_SERVICE") */
+
+	user_service := "34.131.139.0:9091"
+	rating_service := "34.131.139.0:9092"
+	hotel_service := "34.131.139.0:9093"
 
 	r := gin.Default()
 
@@ -77,7 +79,7 @@ func main() {
 	r.Any("/api/hotels/*proxyPath", reverseProxy(hotelServiceURL))
 
 	// Start the API Gateway on port 9094
-	if err := r.Run(":" + app_port); err != nil {
+	if err := r.Run(":9094"); err != nil {
 		log.Fatalf("Failed to start API Gateway: %v", err)
 	}
 }
