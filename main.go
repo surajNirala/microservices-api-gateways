@@ -58,9 +58,9 @@ func main() {
 	rating_service := os.Getenv("RATING_SERVICE")
 	hotel_service := os.Getenv("HOTEL_SERVICE") */
 
-	user_service := "34.131.139.0:9091"
-	rating_service := "34.131.139.0:9092"
-	hotel_service := "34.131.139.0:9093"
+	user_service := "http://34.131.139.0:9091"
+	rating_service := "http://34.131.139.0:9092"
+	hotel_service := "http://34.131.139.0:9093"
 
 	r := gin.Default()
 
